@@ -14,10 +14,6 @@ For this project, you will be working in pairs to build a Django application tha
 * Your application should have a User model (the built-in one is fine) and have registration and login.
 * You do not need to have users click an email link to finish registration -- the simple flow from django-registration-redux is fine.
 
-#### Stretch goals
-
-* Try making [a custom user model](https://wsvincent.com/django-custom-user-model-tutorial/).
-
 ### Goal 1: Habits
 
 * Users should be able to create a new habit tracker. Each habit should have a name and a target or goal. What is this "target"? Each habit should have a daily number of some action you want to do. Some examples:
