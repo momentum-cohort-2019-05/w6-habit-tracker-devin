@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+yapf = "*"
+prospector = "*"
+
+[packages]
+django = ">=2.2"
+django-debug-toolbar = "*"
+
+[requires]
+python_version = "3.7"
