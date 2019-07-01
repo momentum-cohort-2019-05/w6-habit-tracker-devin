@@ -14,16 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.urls import path, include
+from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import include, path
 from django.views.generic import RedirectView
 from core import views as core_views
 
 urlpatterns = [
     path('', core_views.index, name='index'),
     path('', RedirectView.as_view(url='/index/', permanent=True)),
-    path('habittracker/', core_views.HabitTrackerListView.as_view(), 'habittracker'),
-    path('habittracker/<int:pk>', core_views.HabitTrackerDetailView.as_view(), 'habittracker-detail'),
+    path('habittracker/', core_views.HabitTrackerListView.as_view(), name='habittracker'),
+    path('habittracker/<int:pk>', core_views.HabitTrackerDetailView.as_view(), name='habittracker-detail'),
     path('habittracker/create', core_views.HabitTrackerCreate.as_view(), name='habittracker-create'),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
