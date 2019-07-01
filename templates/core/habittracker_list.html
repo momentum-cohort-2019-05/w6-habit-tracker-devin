@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Habit Tracker List</h1>
+  {% if habittracker_list %}
+  <ul>
+    {% for habit in habittracker_list %}
+    <li>
+      <a href="{{ habit.get_absolute_url }}">{{ habit.habit_name }}</a> ({{ habit.date_recorded }}) -- {{ habit.owner }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no habit tracker lists.</p>
+  {% endif %}       
+{% endblock %}
