@@ -13,7 +13,7 @@ class HabitTracker(models.Model):
 # Create your models here.
 
     class Meta:
-        ordering = ['-post_date']
+        ordering = ['-date_recorded']
         unique_together = [['user', 'habit_entry']]
 
     def get_absolute_url(self):
