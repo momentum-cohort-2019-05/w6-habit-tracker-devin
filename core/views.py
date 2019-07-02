@@ -36,7 +36,7 @@ def add_habit_tracker(request):
             # comment.user = request.user
             habittracker.post = HabitTracker
             form.save(HabitTracker)
-            return redirect('habittracker-detail')
+            return redirect('habittracker')
     else:
         form = HabitTrackerForm()
     return render(request, 'core/habittracker_form.html', {'form': form})
