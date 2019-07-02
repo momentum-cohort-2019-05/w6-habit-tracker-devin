@@ -9,4 +9,14 @@
   <p>{{ habittracker.habit_description}} {{ habittracker.habit_numtarget }}</p>
     <br>
     <br>
+  <p><strong>Daily Records</strong></p>
+  
+    {% for record in habittracker.record_set.all %}
+      <hr>
+      <p>{{ record.user }} ({{ record.record_added }})- {{ record }}</p>
+      <hr>
+    {% empty %}
+      <p>There are no comments.</p> 
+    {% endfor %}
+    <a href="{% url 'add_record_to_habittracker' pk=habittracker.pk %}">Add a new daily record</a>
 {% endblock %}

@@ -40,3 +40,20 @@ def add_habit_tracker(request):
     else:
         form = HabitTrackerForm()
     return render(request, 'core/habittracker_form.html', {'form': form})
+
+@login_required 
+def add_record_to_habittracker(request, pk):
+    from core.forms import RecordForm
+    from django.views.generic.edit import CreateView
+    record = get_object_or_404(HabitTracker, pk=pk)
+    if request.method == "POST":
+        form = RecordForm(request.POST)
+        if form.is_valid():
+            record = form.save(commit=False)
+            # comment.user = request.user
+            record.post = DailyRecord
+            form.save(DailyRecord)
+            return redirect('habittracker_detail', pk=pk)
+    else:
+        form = RecordForm()
+    return render(request, 'core/record_form.html', {'form': form})
