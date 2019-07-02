@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -17,11 +18,12 @@ def index(request):
 
     return render(request, 'index.html', context=context)
 
-class HabitTrackerListView(generic.ListView):
+
+class HabitTrackerListView(LoginRequiredMixin, generic.ListView):
     model = HabitTracker
 
 
-class HabitTrackerDetailView(generic.DetailView):
+class HabitTrackerDetailView(LoginRequiredMixin, generic.DetailView):
     model = HabitTracker
 
 @login_required        
@@ -57,3 +59,5 @@ def add_record_to_habittracker(request, pk):
     else:
         form = RecordForm()
     return render(request, 'core/record_form.html', {'form': form})
+
+

@@ -15,3 +15,4 @@ class RecordForm(forms.ModelForm):
     class Meta:
         model = DailyRecord
         fields = ('habit', 'day_recorded', 'habit_numachieved', 'owner',)
+
