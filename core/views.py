@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.views import generic
 from core.models import HabitTracker, DailyRecord
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,7 +28,7 @@ class HabitTrackerDetailView(generic.DetailView):
 def add_habit_tracker(request):
     from core.forms import HabitTrackerForm
     from django.views.generic.edit import CreateView
-    habittracker = get_object_or_404(HabitTracker)
+    habittracker = get_list_or_404(HabitTracker)
     if request.method == "POST":
         form = HabitTrackerForm(request.POST)
         if form.is_valid():
