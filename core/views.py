@@ -25,10 +25,10 @@ class HabitTrackerDetailView(generic.DetailView):
     model = HabitTracker
 
 @login_required        
-def add_habit_tracker(request, pk):
+def add_habit_tracker(request):
     from core.forms import HabitTrackerForm
     from django.views.generic.edit import CreateView
-    habittracker = get_object_or_404(HabitTracker, pk=pk)
+    habittracker = get_object_or_404(HabitTracker)
     if request.method == "POST":
         form = HabitTrackerForm(request.POST)
         if form.is_valid():
@@ -36,7 +36,7 @@ def add_habit_tracker(request, pk):
             # comment.user = request.user
             habittracker.post = HabitTracker
             form.save(HabitTracker)
-            return redirect('habittracker-detail', pk=pk)
+            return redirect('habittracker-detail')
     else:
         form = HabitTrackerForm()
-    return render(request, 'habittracker/add_habit_tracker', {'form': form})
+    return render(request, 'core/habittracker_form.html', {'form': form})
