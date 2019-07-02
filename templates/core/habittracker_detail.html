@@ -11,9 +11,9 @@
     <br>
   <p><strong>Daily Records</strong></p>
   
-    {% for record in habittracker.record_set.all %}
+    {% for record in habittracker.dailyrecord_set.all %}
       <hr>
-      <p>{{ record.user }} ({{ record.record_added }})- {{ record }}</p>
+      <p>{{ record.owner }} ({{ record.date_recorded }}): Day {{ record.day_recorded}}, Achieved {{ record.habit_numachieved }} {{ record.habit }}</p>
       <hr>
     {% empty %}
       <p>There are no comments.</p> 

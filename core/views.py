@@ -53,7 +53,7 @@ def add_record_to_habittracker(request, pk):
             # comment.user = request.user
             record.post = DailyRecord
             form.save(DailyRecord)
-            return redirect('habittracker_detail', pk=pk)
+            return redirect('habittracker-detail', pk=pk)
     else:
         form = RecordForm()
     return render(request, 'core/record_form.html', {'form': form})

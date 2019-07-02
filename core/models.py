@@ -45,5 +45,5 @@ class DailyRecord(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a detail record for this habit tracker."""
-        return reverse('habittracker-create', args=[str(self.id)])
+        return reverse('habittracker-detail', args=[str(self.id)])
         
