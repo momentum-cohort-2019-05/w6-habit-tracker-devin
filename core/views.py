@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.views.generic.edit import UpdateView
 
 # Create your views here.
 def index(request):
@@ -61,3 +62,8 @@ def add_record_to_habittracker(request, pk):
     return render(request, 'core/record_form.html', {'form': form})
 
 
+class EditRecordForm(UpdateView):
+    """View for editing daily record"""
+    model = DailyRecord
+    fields = '__all__'
+    success_url = reverse_lazy('habittracker')

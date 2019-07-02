@@ -31,6 +31,7 @@
       <p>There are no comments.</p> 
     {% endfor %}
     <a href="{% url 'add_record_to_habittracker' pk=habittracker.pk %}">Add a new daily record</a>
+    <a href="{% url 'edit_record_to_habittracker' pk=habittracker.pk %}">Edit a daily record</a>
 {% endblock %}
 </body>
 
