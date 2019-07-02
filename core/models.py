@@ -25,6 +25,7 @@ class HabitTracker(models.Model):
 
 
 class DailyRecord(models.Model):
+    day_recorded = models.IntegerField(default=1, help_text="Enter what day you are on for habit tracker (e.g. Day 1, Day 2, ...)")
     habit_numachieved = models.IntegerField(help_text='Enter the number you hit for your daily habit')
     date_recorded = models.DateTimeField(auto_now_add=True)
     habit = models.ForeignKey(HabitTracker, on_delete=models.CASCADE)
