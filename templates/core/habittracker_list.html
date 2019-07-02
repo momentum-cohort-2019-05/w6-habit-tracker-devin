@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Habit Tracker List</h1>
+<header class="tc ph4">
+    <h2 class="mt1 mb0 f4 fw3 ttu tracked"><strong><emphasis>Habit Tracker List:</emphasis></strong></h2>
   {% if habittracker_list %}
-  <ul>
+<ul>
+  <p class="f5 lh-copy measure">
     {% for habit in habittracker_list %}
-    <li>
-      <a href="{{ habit.get_absolute_url }}">{{ habit.habit_name }}</a> ({{ habit.date_recorded }}) -- {{ habit.owner }}</a>
-    </li>
-  {% endfor %}
-  </ul>
+  <p><br>
+    <div class="normal f3"><a href="{{ habit.get_absolute_url }}">{{ habit.habit_name }}</a><span class="f4"> ({{ habit.date_recorded }}) for {{ habit.owner }}</span></div>
+  </p>  
+    {% endfor %}
+  <p></p>
   {% else %}
     <p>There are no habit tracker lists.</p>
-  {% endif %}       
+  {% endif %}
+  </p>
+</ul>  
+</header>       
 {% endblock %}
