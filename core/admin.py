@@ -7,12 +7,12 @@ from core.models import HabitTracker, DailyRecord
 # admin.site.register(HabitTracker)
 @admin.register(HabitTracker)
 class HabitTrackerAdmin(admin.ModelAdmin):
-    list_display = ('habit_name', 'habit_description', 'habit_numtarget', 'date_recorded', 'owner')
+    list_display = ('habit_name', 'habit_description', 'habit_numtarget', 'owner')
     fields = ['habit_name', 'habit_description', 'habit_numtarget', 'owner']
 
 
 @admin.register(DailyRecord)
 class DailyRecordAdmin(admin.ModelAdmin):
-    list_display = ('habit', 'habit_numachieved', 'date_recorded', 'owner')
+    list_display = ('habit', 'habit_numachieved', 'owner')
     fields = ['habit', 'habit_numachieved', 'owner']
 
