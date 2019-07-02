@@ -25,7 +25,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/index/', permanent=True)),
     path('habittracker/', core_views.HabitTrackerListView.as_view(), name='habittracker'),
     path('habittracker/<int:pk>', core_views.HabitTrackerDetailView.as_view(), name='habittracker-detail'),
-    path('habittracker/create', core_views.HabitTrackerCreate.as_view(), name='habittracker-create'),
+    path('habittracker/add_habit_tracker', core_views.add_habit_tracker, name='add_habit_tracker'),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
 ]

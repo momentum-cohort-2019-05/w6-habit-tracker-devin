@@ -18,6 +18,10 @@ class HabitTracker(models.Model):
         """Returns the url to access a detail record for this habit tracker."""
         return reverse('habittracker-detail', args=[str(self.id)])
 
+    def approve(self):
+        self.approved_habittracker = True
+        self.save()
+
 
     def __str__(self):
         """String for representing the Model object."""

@@ -24,19 +24,19 @@ class HabitTrackerListView(generic.ListView):
 class HabitTrackerDetailView(generic.DetailView):
     model = HabitTracker
 
-
-class HabitTrackerCreate(LoginRequiredMixin, CreateView):
-    model = HabitTracker
-    fields = ['habit_name', 'habit_description', 'habit_numtarget', 'date_recorded', 'owner']
-
-    login_url = '/accounts/login/'
-    redirect_field_name = 'redirect_to'
-
-    def get_success_url(self):
-        return reverse_lazy('habit-detail', kwargs = {'pk': self.kwargs['pk']})
-    
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super(HabitTrackerCreate, self).get_context_data(**kwargs)
-        context['habit'] = get_object_or_404(HabitTracker, pk = self.kwargs['pk'])
-        return context
+@login_required        
+def add_habit_tracker(request, pk):
+    from core.forms import HabitTrackerForm
+    from django.views.generic.edit import CreateView
+    habittracker = get_object_or_404(HabitTracker, pk=pk)
+    if request.method == "POST":
+        form = HabitTrackerForm(request.POST)
+        if form.is_valid():
+            habittracker = form.save(commit=False)
+            # comment.user = request.user
+            habittracker.post = HabitTracker
+            form.save(HabitTracker)
+            return redirect('habittracker-detail', pk=pk)
+    else:
+        form = HabitTrackerForm()
+    return render(request, 'habittracker/add_habit_tracker', {'form': form})
