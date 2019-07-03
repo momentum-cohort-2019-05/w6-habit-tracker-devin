@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<body>
+<link rel="stylesheet" href="{% static 'style.css' %}"/>
+  <h1>{{ habittracker.habit_name}} </h1>
+  <p><strong>Owner</strong>: {{ habittracker.owner }}</p>
+  <p><strong>Date Recorded</strong>: {{ habittracker.date_recorded }}</p>
+  <p><strong>Habit Description:</strong></p>
+  <p>{{ habittracker.habit_description}} {{ habittracker.habit_numtarget }}</p>
+    <br>
+    <br>
+  <p><strong>Daily Records</strong></p>
+  
+    {% for record in habittracker.dailyrecord_set.all %}
+      <hr>
+      {% if record.habit_numachieved < habittracker.habit_numtarget %}
+      <table>
+      <tr>
+        <td>{{ record.owner }} </td><td><a href="{{ record.get_absolute_url }}">({{ record.date_recorded }}: Edit Entry)</a></td><td>Day {{ record.day_recorded}} </td><td>Achieved {{ record.habit_numachieved }} {{ record.habit }} </td><td><p><font color=#FF5733>You did not meet your daily goal!</font></p></td></tr>
+      </table>
+      {% else %}
+      <table>
+        <tr>
+          <td>{{ record.owner }} </td><td><a href="{{ record.get_absolute_url }}">({{ record.date_recorded }}: Edit Entry)</a></td><td>Day {{ record.day_recorded}} </td><td>Achieved {{ record.habit_numachieved }} {{ record.habit }} </td><td><p><font color=“green”>You met your daily goal!</font></p></td></tr>
+      </table>
+      {% endif %}
+      </hr>
+    {% empty %}
+      <p>There are no comments.</p> 
+    {% endfor %}
+    <a href="{% url 'add_record_to_habittracker' pk=habittracker.pk %}">Add a new daily record</a>
+{% endblock %}
+</body>
+

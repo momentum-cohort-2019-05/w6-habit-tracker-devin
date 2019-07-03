@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="tc ph4">
+    <div><br><br><br>
+    <h1 class="mt1 mb0 f4 fw3 ttu tracked">
+      Our Habit Tracker Contains The Following Records:
+    </h1>
+    <h4 class="mt2 mb0 f6 fw4 ttu tracked">
+      <ul>
+        <li><strong>Habit Trackers:</strong> {{ num_habit_names }}</li>
+      </ul>
+    </h4>
+    </div>
+  </header>
+{% endblock %}
