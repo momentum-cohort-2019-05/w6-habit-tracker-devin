@@ -18,12 +18,12 @@
       {% if record.habit_numachieved < habittracker.habit_numtarget %}
       <table>
       <tr>
-        <td>{{ record.owner }} </td><td>({{ record.date_recorded }}) </td><td>Day {{ record.day_recorded}} </td><td>Achieved {{ record.habit_numachieved }} {{ record.habit }} </td><td><p><font color=#FF5733>You did not meet your daily goal!</font></p></td></tr>
+        <td>{{ record.owner }} </td><td><a href="{{ record.get_absolute_url }}">({{ record.date_recorded }}: Edit Entry)</a></td><td>Day {{ record.day_recorded}} </td><td>Achieved {{ record.habit_numachieved }} {{ record.habit }} </td><td><p><font color=#FF5733>You did not meet your daily goal!</font></p></td></tr>
       </table>
       {% else %}
       <table>
         <tr>
-          <td>{{ record.owner }} </td><td>({{ record.date_recorded }}) </td><td>Day {{ record.day_recorded}} </td><td>Achieved {{ record.habit_numachieved }} {{ record.habit }} </td><td><p><font color=“green”>You met your daily goal!</font></p></td></tr>
+          <td>{{ record.owner }} </td><td><a href="{{ record.get_absolute_url }}">({{ record.date_recorded }}: Edit Entry)</a></td><td>Day {{ record.day_recorded}} </td><td>Achieved {{ record.habit_numachieved }} {{ record.habit }} </td><td><p><font color=“green”>You met your daily goal!</font></p></td></tr>
       </table>
       {% endif %}
       </hr>
@@ -31,7 +31,6 @@
       <p>There are no comments.</p> 
     {% endfor %}
     <a href="{% url 'add_record_to_habittracker' pk=habittracker.pk %}">Add a new daily record</a>
-    <a href="{% url 'edit_record_to_habittracker' pk=habittracker.pk %}">Edit a daily record</a>
 {% endblock %}
 </body>
 

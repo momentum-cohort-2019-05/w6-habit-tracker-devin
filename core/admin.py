@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from core.models import HabitTracker, DailyRecord
+from core.models import HabitTracker, DailyRecord, Observer
 
 # Register your models here.
 
@@ -16,3 +16,5 @@ class DailyRecordAdmin(admin.ModelAdmin):
     list_display = ('habit', 'day_recorded', 'date_recorded', 'habit_numachieved', 'owner')
     fields = ['habit', 'day_recorded', 'date_recorded', 'habit_numachieved', 'owner']
 
+
+admin.site.register(Observer)

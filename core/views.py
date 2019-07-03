@@ -62,6 +62,10 @@ def add_record_to_habittracker(request, pk):
     return render(request, 'core/record_form.html', {'form': form})
 
 
+class DailyRecordDetailView(LoginRequiredMixin, generic.DetailView):
+    model = DailyRecord
+
+
 class DailyRecordUpdate(UpdateView):
     """View for editing daily record"""
     model = DailyRecord
