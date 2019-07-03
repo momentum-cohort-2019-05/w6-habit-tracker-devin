@@ -14,5 +14,5 @@ class RecordForm(forms.ModelForm):
 
     class Meta:
         model = DailyRecord
-        fields = ('habit', 'day_recorded', 'habit_numachieved', 'owner',)
+        fields = ('habit', 'day_recorded', 'date_recorded', 'habit_numachieved', 'owner',)
 

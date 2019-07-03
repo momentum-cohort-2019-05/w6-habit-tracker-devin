@@ -13,6 +13,6 @@ class HabitTrackerAdmin(admin.ModelAdmin):
 
 @admin.register(DailyRecord)
 class DailyRecordAdmin(admin.ModelAdmin):
-    list_display = ('habit', 'day_recorded', 'habit_numachieved', 'owner')
-    fields = ['habit', 'day_recorded', 'habit_numachieved', 'owner']
+    list_display = ('habit', 'day_recorded', 'date_recorded', 'habit_numachieved', 'owner')
+    fields = ['habit', 'day_recorded', 'date_recorded', 'habit_numachieved', 'owner']
 

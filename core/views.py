@@ -62,7 +62,7 @@ def add_record_to_habittracker(request, pk):
     return render(request, 'core/record_form.html', {'form': form})
 
 
-class EditRecordForm(UpdateView):
+class DailyRecordUpdate(UpdateView):
     """View for editing daily record"""
     model = DailyRecord
     fields = '__all__'

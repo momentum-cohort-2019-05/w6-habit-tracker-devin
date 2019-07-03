@@ -31,13 +31,13 @@ class HabitTracker(models.Model):
 class DailyRecord(models.Model):
     day_recorded = models.IntegerField(default=1, help_text="Enter what day you are on for habit tracker (e.g. Day 1, Day 2, ...)")
     habit_numachieved = models.IntegerField(help_text='Enter the number you hit for your daily habit')
-    date_recorded = models.DateTimeField(default=timezone.now)
+    date_recorded = models.DateField(help_text="Enter the date for your daily habit")
     habit = models.ForeignKey(HabitTracker, on_delete=models.CASCADE)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-date_recorded']
-        unique_together = [['owner', 'habit_numachieved']]
+        unique_together = [['habit', 'date_recorded']]
     
     def __str__(self):
         """String for representing the Model object."""
