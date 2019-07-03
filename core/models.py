@@ -9,7 +9,8 @@ class HabitTracker(models.Model):
     habit_description = models.TextField(max_length=5000, help_text='Type your habit description here')
     habit_numtarget = models.IntegerField(help_text='Enter the number you want to achieve daily for this habit')
     date_recorded = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE) 
+    observers = models.ManyToManyField("Observer")
 
     class Meta:
         ordering = ['-date_recorded']
@@ -46,4 +47,8 @@ class DailyRecord(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this habit tracker."""
         return reverse('habittracker-detail', args=[str(self.id)])
+
+
+class Observer(models.Model):
+    observer = models.ForeignKey(User, on_delete=models.CASCADE)
         
