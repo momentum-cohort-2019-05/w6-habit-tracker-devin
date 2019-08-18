@@ -2,6 +2,10 @@
 
 For this project, you will be working in pairs to build a Django application that you can use to help track and reinforce daily habits.
 
+## Habit Tracker Deployment
+
+https://teamdevin-habittracker.herokuapp.com/
+
 ## Requirements and Goals
 
 * Your application should be styled. It should be usable and aesthetically neutral, at a minimum.
